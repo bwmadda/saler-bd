@@ -10,7 +10,10 @@ if (config('settings.listing.display_mode') == '.compact-view') {
 	$colPriceBox = 'col-sm-3';
 }
 ?>
+
 <link href="/assets/slider/css/stylee.css" rel='stylesheet' type='text/css' />
+<link href="/assets/slider/css/custom.css" rel='stylesheet' type='text/css' />
+
 @if (isset($posts) and count($posts) > 0)
 	@include('home.inc.spacer')
 
@@ -30,6 +33,9 @@ if (config('settings.listing.display_mode') == '.compact-view') {
 				<h5 class="list-title">
                     <strong><a href="#">{{ t('All Categories') }}</a></strong>
                 </h5>
+
+
+        <div class="cssmenu">
 				<ul class="list-unstyled">
 					@foreach ($cats->groupBy('parent_id')->get(0) as $iCat)
 						<li onmouseover="showSubCategories({{ $iCat->id }})" onmouseout="hideSubCategories({{ $iCat->id }})">
@@ -49,12 +55,21 @@ if (config('settings.listing.display_mode') == '.compact-view') {
 						</li>
 					@endforeach
 				</ul>
+
+
+      </div>
 			</div>
+
+
+
+
+
 
 			<!-- City -->
             <div class="locations-list list-filter">
                 <h5 class="list-title"><strong><a href="#">{{ t('Locations') }}</a></strong></h5>
                 <ul class="browse-list list-unstyled long-list">
+                  <a href="http://localhost/saler-bd/public/search">All Bangladesh</a>
                     @if (isset($cities) and $cities->count() > 0)
                         @foreach ($cities as $city)
                             <?php
@@ -66,6 +81,8 @@ if (config('settings.listing.display_mode') == '.compact-view') {
                                 'sc' => (isset($subCat)) ? $subCat->tid : '',
                             ];
                             ?>
+
+
                             <li>
                                 @if ((isset($uriPathCityId) and $uriPathCityId == $city->id) or (Request::input('l')==$city->id))
                                     <strong>
@@ -248,7 +265,7 @@ if (config('settings.listing.display_mode') == '.compact-view') {
         <div style="clear: both"></div>
         @if (isset($latestOptions) and isset($latestOptions['show_show_more_btn']) and $latestOptions['show_show_more_btn'] == '1')
 
-        <!-- Hide As Clients Requirements 
+        <!-- Hide As Clients Requirements
         <div class="mb20" style="text-align: center;">
           <a href="{{ lurl(trans('routes.v-search', ['countryCode' => $country->get('icode')])) }}" class="btn btn-default mt10">
             <i class="fa fa-arrow-circle-right"></i> {{ t('View more') }}
