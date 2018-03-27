@@ -1,4 +1,16 @@
-
+{{--
+ * LaraClassified - Geo Classified Ads CMS
+ * Copyright (c) BedigitCom. All Rights Reserved
+ *
+ * Website: http://www.bedigit.com
+ *
+ * LICENSE
+ * -------
+ * This software is furnished under a license and may be used and copied
+ * only in accordance with the terms of such license and with the inclusion
+ * of the above copyright notice. If you Purchased from Codecanyon,
+ * Please read the full License from here - http://codecanyon.net/licenses/standard
+--}}
 @extends('layouts.master')
 
 @section('content')
@@ -38,7 +50,7 @@
 						</div>
 					</div>
 				@endif
-
+					
 				<div class="col-lg-12">
 					<div class="alert alert-info">
 						{{ getTokenMessage() }}:
@@ -52,11 +64,11 @@
 								<span class="logo-icon"> </span> {{ t('Code') }} <span> </span>
 							</h2>
 						</div>
-
+						
 						<div class="panel-body">
 							<form id="tokenForm" role="form" method="POST" action="{{ lurl(Request::path()) }}">
 								{!! csrf_field() !!}
-
+								
 								<!-- Token -->
 								<div class="form-group <?php echo (isset($errors) and $errors->has('code')) ? 'has-error' : ''; ?>">
 									<label for="code" class="control-label">{{ getTokenLabel() }}:</label>
@@ -64,14 +76,14 @@
 										<input id="code" name="code" type="text" placeholder="{{ t('Enter the validation code') }}" class="form-control" value="{{ old('code') }}">
 									</div>
 								</div>
-
+								
 								<!-- Submit -->
 								<div class="form-group">
 									<button id="tokenBtn" type="submit" class="btn btn-primary btn-lg btn-block">{{ t('Submit') }}</button>
 								</div>
 							</form>
 						</div>
-
+						
 						<div class="panel-footer">
 							<p class="text-center"></p>
 							<div style=" clear:both"></div>

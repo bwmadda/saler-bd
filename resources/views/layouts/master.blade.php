@@ -1,4 +1,16 @@
-
+{{--
+ * LaraClassified - Geo Classified Ads CMS
+ * Copyright (c) BedigitCom. All Rights Reserved
+ *
+ * Website: http://www.bedigit.com
+ *
+ * LICENSE
+ * -------
+ * This software is furnished under a license and may be used and copied
+ * only in accordance with the terms of such license and with the inclusion
+ * of the above copyright notice. If you Purchased from Codecanyon,
+ * Please read the full License from here - http://codecanyon.net/licenses/standard
+--}}
 <?php
 	$fullUrl = url(\Illuminate\Support\Facades\Request::getRequestUri());
 	$detectAdsBlockerPlugin = load_installed_plugin('detectadsblocker');
@@ -54,9 +66,9 @@
 	@if (config('settings.seo.alexa_verify_id'))
 		<meta name="alexaVerifyID" content="{{ config('settings.seo.alexa_verify_id') }}" />
 	@endif
-
+    
     @yield('before_styles')
-
+	
 	@if (config('lang.direction') == 'rtl')
 		<link href="https://fonts.googleapis.com/css?family=Cairo|Changa" rel="stylesheet">
 		<link href="{{ url(mix('css/app.rtl.css')) }}" rel="stylesheet">
@@ -66,23 +78,23 @@
 	@if (isset($detectAdsBlockerPlugin) and !empty($detectAdsBlockerPlugin))
 		<link href="{{ url('assets/detectadsblocker/css/style.css') . getPictureVersion() }}" rel="stylesheet">
 	@endif
-
+	
 	@include('layouts.inc.tools.style')
-
+	
 	<link href="{{ url('css/custom.css') . getPictureVersion() }}" rel="stylesheet">
-
+    
     @yield('after_styles')
-
+	
 	@if (isset($installedPlugins) and count($installedPlugins) > 0)
 		@foreach($installedPlugins as $pluginName)
 			@yield($pluginName . '_styles')
 		@endforeach
 	@endif
-
+    
     @if (config('settings.style.custom_css'))
 		{!! printCss(config('settings.style.custom_css')) . "\n" !!}
     @endif
-
+	
 	@if (config('settings.other.js_code'))
 		{!! printJs(config('settings.other.js_code')) . "\n" !!}
 	@endif
@@ -91,7 +103,7 @@
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
-
+ 
 	<script>
 		paceOptions = {
 			elements: true
@@ -102,17 +114,17 @@
 <body class="{{ config('app.skin') }}">
 
 <div id="wrapper">
-
+	
 	@section('header')
 		@include('layouts.inc.header')
 	@show
 
 	@section('search')
 	@show
-
+		
 	@section('wizard')
 	@show
-
+	
 	@if (isset($siteCountryInfo))
 		<div class="h-spacer"></div>
 		<div class="container">
@@ -131,7 +143,7 @@
 
 	@section('info')
 	@show
-
+	
 	@section('footer')
 		@include('layouts.inc.footer')
 	@show
@@ -159,7 +171,7 @@
 	var siteUrl = '<?php echo url('/'); ?>';
 	var languageCode = '<?php echo config('app.locale'); ?>';
 	var countryCode = '<?php echo config('country.code', 0); ?>';
-
+	
 	{{-- Init. Translation Vars --}}
 	var langLayout = {
 		'hideMaxListItems': {
@@ -213,14 +225,14 @@
 			minimumResultsForSearch: Infinity,
 			width: '100%'
 		});
-
+		
 		{{-- Searchable Select Boxes --}}
 		$('.sselecter').select2({
 			language: langLayout.select2,
 			dropdownAutoWidth: 'true',
 			width: '100%'
 		});
-
+		
 		{{-- Social Share --}}
 		$('.share').ShareLink({
 			title: '{{ addslashes(MetaTag::get('title')) }}',
@@ -229,7 +241,7 @@
 			width: 640,
 			height: 480
 		});
-
+		
 		{{-- Modal Login --}}
 		@if (isset($errors) and $errors->any())
 			@if ($errors->any() and old('quickLoginForm')=='1')

@@ -1,4 +1,16 @@
-
+{{--
+ * LaraClassified - Geo Classified Ads CMS
+ * Copyright (c) BedigitCom. All Rights Reserved
+ *
+ * Website: http://www.bedigit.com
+ *
+ * LICENSE
+ * -------
+ * This software is furnished under a license and may be used and copied
+ * only in accordance with the terms of such license and with the inclusion
+ * of the above copyright notice. If you Purchased from Codecanyon,
+ * Please read the full License from here - http://codecanyon.net/licenses/standard
+--}}
 @extends('layouts.master')
 
 @section('search')
@@ -11,7 +23,7 @@
 	<div class="main-container">
 		<div class="container">
 			<div class="row clearfix">
-
+				
 				@if (isset($errors) and $errors->any())
 					<div class="col-lg-12">
 						<div class="alert alert-danger">
@@ -35,7 +47,7 @@
 						</div>
 					</div>
 				@endif
-
+				
 				<div class="col-md-12">
 					<div class="contact-form">
 						<h5 class="list-title gray"><strong>{{ t('Contact Us') }}</strong></h5>

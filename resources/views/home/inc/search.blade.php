@@ -3,8 +3,8 @@
 $sForm = [
 	'enableFormAreaCustomization' => '0',
 	'hideTitles'                  => '0',
-	'title'                       => t('SalerBD'),
-	'subTitle'                    => t('Simple, fast and efficient in Bangladesh'),
+	'title'                       => t('Sell and buy near you'),
+	'subTitle'                    => t('Simple, fast and efficient'),
 	'bigTitleColor'               => '', // 'color: #FFF;',
 	'subTitleColor'               => '', // 'color: #FFF;',
 	'backgroundColor'             => '', // 'background-color: #444;',
@@ -83,24 +83,24 @@ if (isset($country) and file_exists(config('larapen.core.maps.path') . strtolowe
 }
 ?>
 @if (isset($sForm['enableFormAreaCustomization']) and $sForm['enableFormAreaCustomization'] == '1')
-
+	
 	@if (isset($firstSection) and !$firstSection)
 		<div class="h-spacer"></div>
 	@endif
-
+	
 	<?php $parallax = (isset($sForm['parallax']) and $sForm['parallax'] == '1') ? 'parallax' : ''; ?>
 	<div class="wide-intro {{ $parallax }}">
 		<div class="dtable hw100">
 			<div class="dtable-cell hw100">
 				<div class="container text-center">
-
+					
 					@if ($sForm['hideTitles'] != '1')
 						<h1 class="intro-title animated fadeInDown"> {{ $sForm['title'] }} </h1>
 						<p class="sub animateme fittext3 animated fadeIn">
 							{!! $sForm['subTitle'] !!}
 						</p>
 					@endif
-
+					
 					@if ($sForm['hideForm'] != '1')
 						<div class="row search-row fadeInUp">
 							<form id="seach" name="search" action="{{ lurl(trans('routes.v-search', ['countryCode' => $country->get('icode')])) }}" method="GET">
@@ -130,14 +130,14 @@ if (isset($country) and file_exists(config('larapen.core.maps.path') . strtolowe
 							</form>
 						</div>
 					@endif
-
+				
 				</div>
 			</div>
 		</div>
 	</div>
-
+	
 @else
-
+	
 	@include('home.inc.spacer')
 	<div class="container">
 		<div class="intro">
@@ -171,11 +171,11 @@ if (isset($country) and file_exists(config('larapen.core.maps.path') . strtolowe
 								{!! csrf_field() !!}
 							</form>
 						</div>
-
+	
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	
 @endif
