@@ -1,16 +1,4 @@
-{{--
- * LaraClassified - Geo Classified Ads CMS
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: http://www.bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from Codecanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
---}}
+
 <?php
 	$fullUrl = url(\Illuminate\Support\Facades\Request::getRequestUri());
 	$tmpExplode = explode('?', $fullUrl);
@@ -25,7 +13,7 @@
 
 @section('content')
 	<div class="main-container">
-		
+
 		@include('search.inc.breadcrumbs')
 		@include('search.inc.categories')
 		<?php if (\App\Models\Advertising::where('slug', 'top')->count() > 0): ?>
@@ -39,7 +27,7 @@
 		endif;
 		?>
 		@include('common.spacer')
-		
+
 		<div class="container">
 			<div class="row">
 
@@ -99,7 +87,7 @@
                                     @endforeach
                                 @endif
 							</ul>
-						
+
 							@if (config('settings.listing.left_sidebar'))
 								<!-- Mobile Filter bar -->
 								<div class="mobile-filter-bar col-lg-12">
@@ -148,14 +136,14 @@
 														@endfor
 													@endif
 												</ul>
-											
+
 											</div>
 										</li>
 									</ul>
 								</div>
 								<div class="menu-overly-mask"></div>
 								<!-- Mobile Filter bar End-->
-								
+
 								<?php
 									$tabFilterHideXs = 'hide-xs';
 									$listingFilterHiddenXs = 'hidden-xs';
@@ -166,8 +154,8 @@
 									$listingFilterHiddenXs = '';
 								?>
 							@endif
-							
-							
+
+
 							<div class="tab-filter {{ $tabFilterHideXs }}">
 								<select id="orderBy" class="selecter" data-style="btn-select" data-width="auto">
 									<option value="{!! qsurl($fullUrlNoParams, Request::except(['orderBy', 'distance'])) !!}">{{ t('Sort by') }}</option>
@@ -207,7 +195,7 @@
 								</div>
                                 <div style="clear:both;"></div>
 							</div>
-                            
+
 							@if ($paginator->getCollection()->count() > 0)
 								<div class="pull-right col-xs-2 text-right listing-view-action">
 									<span class="list-view"><i class="icon-th"></i></span>
@@ -250,7 +238,7 @@
 					</div>
 
 				</div>
-				
+
 				<div style="clear:both;"></div>
 
 				<!-- Advertising -->

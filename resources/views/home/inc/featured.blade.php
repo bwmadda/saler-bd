@@ -18,17 +18,17 @@ if (!isset($cacheExpiration)) {
 						</h2>
 					</div>
 				</div>
-		
+
 				<div style="clear: both"></div>
-		
+
 				<div class="relative content featured-list-row clearfix">
-					
+
 					<div class="large-12 columns">
 						<div class="no-margin featured-list-slider owl-carousel owl-theme">
 							<?php
 							foreach($featured->posts as $key => $post):
 								if (empty($countries) or !$countries->has($post->country_code)) continue;
-			
+
 								// Picture setting
 								$pictures = \App\Models\Picture::where('post_id', $post->id)->orderBy('position')->orderBy('id');
 								if ($pictures->count() > 0) {
@@ -36,14 +36,14 @@ if (!isset($cacheExpiration)) {
 								} else {
 									$postImg = resize(config('larapen.core.picture.default'));
 								}
-			
+
 								// Category
 								$cacheId = 'category.' . $post->category_id . '.' . config('app.locale');
 								$liveCat = \Illuminate\Support\Facades\Cache::remember($cacheId, $cacheExpiration, function () use ($post) {
 									$liveCat = \App\Models\Category::find($post->category_id);
 									return $liveCat;
 								});
-			
+
 								// Check parent
 								if (empty($liveCat->parent_id)) {
 									$liveCatType = $liveCat->type;
@@ -62,13 +62,13 @@ if (!isset($cacheExpiration)) {
 											<img class="img-responsive" src="{{ $postImg }}" alt="{{ mb_ucfirst($post->title) }}" style="border: 1px solid #e7e7e7; margin-top: 2px;">
 										</span>
 										<span class="item-name">{{ mb_ucfirst(str_limit($post->title, 70)) }}</span>
-										
+
 										@if (isset($reviewsPlugin) and !empty($reviewsPlugin))
 											@if (view()->exists('reviews::ratings-list'))
 												@include('reviews::ratings-list')
 											@endif
 										@endif
-										
+
 										<span class="price">
 											@if (isset($liveCatType) and !in_array($liveCatType, ['not-salable']))
 												@if ($post->price > 0)
@@ -83,10 +83,11 @@ if (!isset($cacheExpiration)) {
 									</a>
 								</div>
 							<?php endforeach; ?>
-			
+
 						</div>
 					</div>
-		
+
+
 				</div>
 			</div>
 		</div>
