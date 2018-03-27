@@ -20,6 +20,8 @@ if ($subCats->has(0)) {
 ?>
 @if (isset($subCats) and !empty($subCats) and isset($cat) and !empty($cat))
 	@if ($subCats->has($cat->tid))
+
+  <!-- Hide as clients Requirements
 		<div class="container">
 			<div class="category-links">
 				<ul>
@@ -33,6 +35,9 @@ if ($subCats->has(0)) {
 				</ul>
 			</div>
 		</div>
+  -->
+
+
 	@endif
 @else
 	@if (isset($cats) and !empty($cats))

@@ -87,12 +87,12 @@ if (config('settings.listing.display_mode') == '.compact-view') {
 			<div style="clear:both"></div>
 		</div>
 	</aside>
-
 </div>
 
+
+
+
 <div class="col-sm-9 " style="padding-bottom: 20px;">
-
-
 
   <div class="col-lg-12 content-box layout-section">
     <div class="row row-featured row-featured-category">
@@ -242,14 +242,20 @@ if (config('settings.listing.display_mode') == '.compact-view') {
           </div>
         </div>
 
-        <div style="clear: both"></div>
 
+
+
+        <div style="clear: both"></div>
         @if (isset($latestOptions) and isset($latestOptions['show_show_more_btn']) and $latestOptions['show_show_more_btn'] == '1')
+
+        <!-- Hide As Clients Requirements 
         <div class="mb20" style="text-align: center;">
           <a href="{{ lurl(trans('routes.v-search', ['countryCode' => $country->get('icode')])) }}" class="btn btn-default mt10">
             <i class="fa fa-arrow-circle-right"></i> {{ t('View more') }}
           </a>
         </div>
+      -->
+
         @endif
       </div>
     </div>
