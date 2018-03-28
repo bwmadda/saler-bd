@@ -43,15 +43,21 @@ if (config('settings.listing.display_mode') == '.compact-view') {
 								<span class="title">{{ $iCat->name }}</span>
 								<span class="count"></span>
 							</a>
-							<ul class="list-unstyled" id="{{ $iCat->id }}" style="display: none">
+							<ul class="list-unstyled childUl" id="{{ $iCat->id }}" style="display: none">
                                 @foreach ($iCat->children as $iCatSub)
-                                    <li>
+                                    <li class="childLi">
                                     	<a href="{{ lurl(trans('routes.v-search-cat', ['countryCode' => $country->get('icode'), 'catSlug' => $iCat->slug.'/'.$iCatSub->slug])) }}" title="{{ $iCatSub->name }}">
                                             <span class="title">{{ $iCatSub->name }}</span>
                                         </a>
                                     </li>
                                 @endforeach
                             </ul>
+                            <script type="text/javascript">
+                              $(document).ready(function() {
+                                  var numitems =  $("#{{ $iCat->id }} li").length;
+
+                                  $("ul#{{ $iCat->id }}").css("column-count",Math.round(numitems/2));
+});                            </script>
 						</li>
 					@endforeach
 				</ul>
@@ -60,7 +66,14 @@ if (config('settings.listing.display_mode') == '.compact-view') {
       </div>
 			</div>
 
-
+<style type="text/css">
+  .childUl {
+  width: 350px !important;
+}
+.childLi {
+width: 170px;
+display: inline-block;
+</style>
 
 
 
