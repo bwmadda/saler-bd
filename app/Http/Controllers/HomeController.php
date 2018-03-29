@@ -103,11 +103,8 @@ class HomeController extends FrontController
         // Get Cities
         $limit = 1000;
         $cacheId = config('country.code') . '.cities.take.' . $limit;
-        $cities = Cache::remember($cacheId, $this->cacheExpiration, function () use($limit) {
-            $cities = City::currentCountry()->take($limit)->orderBy('population', 'DESC')->orderBy('name')->get();
-            return $cities;
-        });
-
+     
+            $cities = City::currentCountry()->whereIn('id', array(1185241, 1336137, 1205733,1336135, 1185128, 1185099, 1185188, 1185162))->orderBy('name')->get();            
         if ($cities->count() > 0) {
             foreach ($cities as $city) {
                 $city->name = trim(head(explode('/', $city->name)));
@@ -120,6 +117,8 @@ class HomeController extends FrontController
                     $this->defaultDate, 'weekly', '0.7');
             }
         }
+
+        
 
         $data['cities'] = $cities;
 		return view('home.index', $data);
